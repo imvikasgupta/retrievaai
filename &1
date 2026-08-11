@@ -1,0 +1,38 @@
+$ vite build --mode development
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+Both esbuild and oxc options were set. oxc options will be used and esbuild options will be ignored. The following esbuild options were set: `{ keepNames: true }`
+[plugin tanstack-start-core::server-fn:client] /dev-server/src/lib/kb.functions.ts:108:28 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:client] /dev-server/src/lib/kb.functions.ts:138:31 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:client] /dev-server/src/lib/kb.functions.ts:216:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:client] /dev-server/src/lib/kb.functions.ts:247:31 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:client] /dev-server/src/lib/kb.functions.ts:257:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:client] /dev-server/src/lib/kb.functions.ts:299:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:client] /dev-server/src/lib/kb.functions.ts:319:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:client] /dev-server/src/lib/kb.functions.ts:330:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:client] /dev-server/src/lib/kb.functions.ts:339:29 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts?tss-serverfn-split:108:28 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts?tss-serverfn-split:138:31 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts?tss-serverfn-split:216:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts?tss-serverfn-split:247:31 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts?tss-serverfn-split:257:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts?tss-serverfn-split:299:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts?tss-serverfn-split:319:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts?tss-serverfn-split:330:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts?tss-serverfn-split:339:29 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts:108:28 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts:138:31 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts:216:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts:247:31 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts:257:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts:299:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts:319:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts:330:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+[plugin tanstack-start-core::server-fn:ssr] /dev-server/src/lib/kb.functions.ts:339:29 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.
+
+ WARN  inlineDynamicImports option is ignored because the codeSplitting option is specified.
+

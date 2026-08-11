@@ -43,7 +43,6 @@ import {
   reindexDocument,
   searchKnowledge,
 } from "@/lib/kb.functions";
-import { extractPages } from "@/lib/extract.client";
 import { formatBytes, isSupportedFile, MAX_UPLOAD_BYTES, fileExtension } from "@/lib/rag";
 import { cn } from "@/lib/utils";
 
@@ -107,6 +106,7 @@ function KnowledgePage() {
 
       setUploading(file.name);
       try {
+        const { extractPages } = await import("@/lib/extract-file");
         const pages = await extractPages(file);
         const result = await runIngest({
           data: {
