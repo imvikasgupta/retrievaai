@@ -1,8 +1,23 @@
-import { useState, useRef, useEffect, type ReactElement, type MouseEvent, type KeyboardEvent } from "react";
+import {
+  useState,
+  useRef,
+  useEffect,
+  type ReactElement,
+  type MouseEvent,
+  type KeyboardEvent,
+  type ReactNode,
+} from "react";
 import { cn } from "@/lib/utils";
 
+type ChildProps = {
+  value?: string;
+  children?: ReactNode;
+  onClick?: (event: MouseEvent<HTMLElement>) => void;
+  onKeyDown?: (event: KeyboardEvent<HTMLElement>) => void;
+};
+
 export type AnimatedBackgroundProps = {
-  children: ReactElement<{ value?: string; children?: React.ReactNode }>[];
+  children: ReactElement<ChildProps>[];
   defaultValue?: string;
   className?: string;
   onValueChange?: (value: string) => void;
