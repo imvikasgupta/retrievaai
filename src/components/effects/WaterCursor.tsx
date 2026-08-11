@@ -68,7 +68,7 @@ export function WaterCursor({
           const cy = y + j;
           if (cx < 1 || cy < 1 || cx >= cols - 1 || cy >= rows - 1) continue;
           const falloff = 1 - Math.min(1, Math.hypot(i, j) / (r + 1));
-          previous[cy * cols + cx] -= power * falloff;
+          previous[cy * cols + cx] = (previous[cy * cols + cx] ?? 0) - power * falloff;
         }
       }
     };
@@ -94,8 +94,8 @@ export function WaterCursor({
         for (let x = 1; x < cols - 1; x++) {
           const i = row + x;
           const value =
-            (previous[i - 1] + previous[i + 1] + previous[i - cols] + previous[i + cols]) / 2 -
-            current[i];
+            (previous[i - 1]! + previous[i + 1]! + previous[i - cols]! + previous[i + cols]!) / 2 -
+            current[i]!;
           current[i] = value * damping;
         }
       }
@@ -105,17 +105,17 @@ export function WaterCursor({
         const row = y * cols;
         for (let x = 1; x < cols - 1; x++) {
           const i = row + x;
-          const h = current[i];
+          const h = current[i]!;
           // Simple normal from neighbours -> specular-ish highlight.
-          const dx = current[i - 1] - current[i + 1];
-          const dy = current[i - cols] - current[i + cols];
+          const dx = current[i - 1]! - current[i + 1]!;
+          const dy = current[i - cols]! - current[i + cols]!;
           const light = Math.min(1, Math.abs(dx + dy) / 60);
           const alpha = Math.min(1, (Math.abs(h) / 40 + light) * 0.9);
           const p = i * 4;
           const shade = 0.55 + light * 0.45;
-          data[p] = tint[0] * shade;
-          data[p + 1] = tint[1] * shade;
-          data[p + 2] = tint[2] * shade;
+          data[p] = tint[0]! * shade;
+          data[p + 1] = tint[1]! * shade;
+          data[p + 2] = tint[2]! * shade;
           data[p + 3] = alpha * 190;
         }
       }
