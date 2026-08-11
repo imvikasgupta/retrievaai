@@ -143,7 +143,7 @@ export const Route = createFileRoute("/api/chat")({
               const { data: matches, error: matchError } = await supabase.rpc("match_chunks", {
                 query_embedding: JSON.stringify(embedding) as unknown as string,
                 match_count: DEFAULT_RAG_SETTINGS.topK,
-                similarity_threshold: DEFAULT_RAG_SETTINGS.similarityThreshold,
+                min_similarity: DEFAULT_RAG_SETTINGS.similarityThreshold,
               });
               if (matchError) throw new Error(matchError.message);
 
