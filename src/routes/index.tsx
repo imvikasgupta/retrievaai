@@ -98,7 +98,10 @@ function Landing() {
               </Link>
             </Button>
             <Button asChild size="sm">
-              <Link to={primaryTo}>
+              <Link
+                to={primaryTo}
+                onClick={() => trackCtaClick("try_the_rag_assistant", "Try the RAGassistant", "header")}
+              >
                 Try the RAGassistant
                 <ArrowRight className="size-4" />
               </Link>
