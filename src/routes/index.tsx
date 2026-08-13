@@ -192,43 +192,49 @@ function Landing() {
                       <span
                         className={`pointer-events-none absolute z-10 hidden text-brand opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:block ${
                           arrowDirLg === "right"
-                            ? "right-4 top-1/2 -translate-y-1/2"
-                            : "bottom-4 left-1/2 -translate-x-1/2"
+                            ? "right-3 top-1/2 -translate-y-1/2"
+                            : "bottom-3 left-1/2 -translate-x-1/2"
                         }`}
                       >
-                        <ArrowRight
-                          className={`size-5 transition-transform duration-300 group-hover:animate-arrow-travel ${
-                            arrowDirLg === "down" ? "rotate-90" : ""
-                          }`}
-                          style={{
-                            [arrowDirLg === "right" ? "--arrow-travel-x" : "--arrow-travel-y"]:
-                              arrowDirLg === "right" ? "1.25rem" : "1.25rem",
-                            [arrowDirLg === "right" ? "--arrow-travel-y" : "--arrow-travel-x"]: "0",
-                          }}
-                        />
+                        <span className="flex size-7 items-center justify-center rounded-full bg-brand/10 shadow-sm backdrop-blur-sm">
+                          <ArrowRight
+                            className={`size-4 transition-transform duration-300 group-hover:animate-arrow-travel ${
+                              arrowDirLg === "down" ? "rotate-90" : ""
+                            }`}
+                            style={{
+                              [arrowDirLg === "right" ? "--arrow-travel-x" : "--arrow-travel-y"]:
+                                arrowDirLg === "right" ? "1rem" : "1rem",
+                              [arrowDirLg === "right" ? "--arrow-travel-y" : "--arrow-travel-x"]: "0",
+                            }}
+                          />
+                        </span>
                       </span>
                       {/* Tablet arrow */}
                       <span
                         className={`pointer-events-none absolute z-10 hidden text-brand opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:block lg:hidden ${
                           arrowDirMd === "right"
-                            ? "right-4 top-1/2 -translate-y-1/2"
-                            : "bottom-4 left-1/2 -translate-x-1/2"
+                            ? "right-3 top-1/2 -translate-y-1/2"
+                            : "bottom-3 left-1/2 -translate-x-1/2"
                         }`}
                       >
-                        <ArrowRight
-                          className={`size-5 transition-transform duration-300 group-hover:animate-arrow-travel ${
-                            arrowDirMd === "down" ? "rotate-90" : ""
-                          }`}
-                          style={{
-                            [arrowDirMd === "right" ? "--arrow-travel-x" : "--arrow-travel-y"]:
-                              arrowDirMd === "right" ? "1.25rem" : "1.25rem",
-                            [arrowDirMd === "right" ? "--arrow-travel-y" : "--arrow-travel-x"]: "0",
-                          }}
-                        />
+                        <span className="flex size-7 items-center justify-center rounded-full bg-brand/10 shadow-sm backdrop-blur-sm">
+                          <ArrowRight
+                            className={`size-4 transition-transform duration-300 group-hover:animate-arrow-travel ${
+                              arrowDirMd === "down" ? "rotate-90" : ""
+                            }`}
+                            style={{
+                              [arrowDirMd === "right" ? "--arrow-travel-x" : "--arrow-travel-y"]:
+                                arrowDirMd === "right" ? "1rem" : "1rem",
+                              [arrowDirMd === "right" ? "--arrow-travel-y" : "--arrow-travel-x"]: "0",
+                            }}
+                          />
+                        </span>
                       </span>
                       {/* Mobile arrow */}
-                      <span className="pointer-events-none absolute bottom-4 left-1/2 z-10 block -translate-x-1/2 text-brand opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:hidden">
-                        <ArrowRight className="size-5 rotate-90 transition-transform duration-300 group-hover:animate-arrow-travel-down" />
+                      <span className="pointer-events-none absolute bottom-3 left-1/2 z-10 block -translate-x-1/2 text-brand opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:hidden">
+                        <span className="flex size-7 items-center justify-center rounded-full bg-brand/10 shadow-sm backdrop-blur-sm">
+                          <ArrowRight className="size-4 rotate-90 transition-transform duration-300 group-hover:animate-arrow-travel-down" />
+                        </span>
                       </span>
                     </>
                   )}
