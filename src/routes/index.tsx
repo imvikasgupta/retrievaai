@@ -304,7 +304,12 @@ Five pre-loaded documents cover products, pricing, refunds, security and support
                 your own files.
               </p>
               <Button asChild size="lg" className="mt-8 gap-2">
-                <Link to={primaryTo}>
+                <Link
+                  to={primaryTo}
+                  onClick={() =>
+                    trackCtaClick("open_the_rag_assistant", "Open the RAG Assistant", "demo_section")
+                  }
+                >
                   Open the RAG Assistant
                   <ArrowRight className="size-4" />
                 </Link>
