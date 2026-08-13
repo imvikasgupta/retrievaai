@@ -125,3 +125,15 @@ export function buildContext(sources: RetrievedSource[]): string {
 export function relevanceLabel(similarity: number): string {
   return `${Math.round(Math.max(0, Math.min(1, similarity)) * 100)}%`;
 }
+
+/** Models offered to agents when drafting an escalation reply. */
+export const ESCALATION_MODELS = [
+  { id: "google/gemini-3.6-flash", label: "Gemini 3.6 Flash", hint: "Fast, balanced default" },
+  { id: "google/gemini-3-pro-preview", label: "Gemini 3 Pro", hint: "Deeper reasoning" },
+  { id: "openai/gpt-5.1", label: "GPT-5.1", hint: "Strong writing quality" },
+  { id: "openai/gpt-5.1-mini", label: "GPT-5.1 Mini", hint: "Cheap and quick" },
+] as const;
+
+export const DEFAULT_ESCALATION_MODEL = ESCALATION_MODELS[0].id;
+
+export const ESCALATION_MODEL_IDS = ESCALATION_MODELS.map((m) => m.id) as unknown as [string, ...string[]];
