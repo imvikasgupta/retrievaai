@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/hooks/useAuth";
 import { WaterCursor } from "@/components/effects/WaterCursor";
+import { trackCtaClick } from "@/lib/analytics";
 import vikasPhoto from "@/assets/vikas.jpg.asset.json";
 import vinayakPhoto from "@/assets/vinayak.jpg.asset.json";
 
