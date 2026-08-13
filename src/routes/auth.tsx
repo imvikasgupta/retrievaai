@@ -79,13 +79,14 @@ function AuthPage() {
           email: parsed.data.email,
           password: parsed.data.password,
           options: {
-            emailRedirectTo: `${window.location.origin}${destination}`,
             data: { full_name: fullName.trim().slice(0, 80) || undefined },
           },
         });
         if (error) throw error;
         if (!data.session) {
-          setCheckEmail(true);
+          setOtp("");
+          setOtpStep(true);
+          toast.success("We sent a 6-digit code to your email");
           return;
         }
         toast.success("Welcome to Retrieva AI");
