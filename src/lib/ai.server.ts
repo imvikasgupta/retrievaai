@@ -127,3 +127,26 @@ export async function* readChatDeltas(response: Response): AsyncGenerator<string
     }
   }
 }
+
+/** Non-streaming chat completion. Used by the escalation reply drafter. */
+export async function completeChat(
+  messages: { role: string; content: string }[],
+  model: string = CHAT_MODEL,
+): Promise<string> {
+  const res = await fetch(`${GATEWAY}/chat/completions`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Lovable-API-Key": apiKey(),
+    },
+    body: JSON.stringify({ model, messages, temperature: 0.3 }),
+  });
+
+  if (!res.ok) {
+    console.error("chat completion failed", res.status, await res.text().catch(() => ""));
+    throw friendlyError(res.status);
+  }
+
+  const json = (await res.json()) as { choices?: { message?: { content?: string } }[] };
+  return json.choices?.[0]?.message?.content?.trim() ?? "";
+}
