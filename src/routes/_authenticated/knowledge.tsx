@@ -228,6 +228,7 @@ function KnowledgePage() {
         <div className="relative flex-1">
           <Search className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
+            aria-label="Search inside your documents"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search inside your documents…"
@@ -297,6 +298,7 @@ function KnowledgePage() {
                   variant="ghost"
                   size="icon"
                   title="Re-index"
+                  aria-label={`Re-index ${document.name}`}
                   onClick={() => reindexMutation.mutate(document.id)}
                   disabled={reindexMutation.isPending}
                 >
@@ -306,6 +308,7 @@ function KnowledgePage() {
                   variant="ghost"
                   size="icon"
                   title="Delete"
+                  aria-label={`Delete ${document.name}`}
                   onClick={() => setPendingDelete({ id: document.id, name: document.name })}
                 >
                   <Trash2 className="size-4 text-destructive" />

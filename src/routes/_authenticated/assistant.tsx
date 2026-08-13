@@ -391,6 +391,7 @@ function AssistantPage() {
             }}
           >
             <Textarea
+              aria-label="Message the assistant"
               ref={inputRef}
               value={input}
               onChange={(event) => setInput(event.target.value)}
@@ -406,11 +407,17 @@ function AssistantPage() {
               className="max-h-40 min-h-11 flex-1 resize-none"
             />
             {streaming ? (
-              <Button type="button" size="icon" variant="outline" onClick={() => abortRef.current?.abort()}>
+              <Button
+                type="button"
+                size="icon"
+                variant="outline"
+                aria-label="Stop generating"
+                onClick={() => abortRef.current?.abort()}
+              >
                 <Square className="size-4" />
               </Button>
             ) : (
-              <Button type="submit" size="icon" disabled={!input.trim()}>
+              <Button type="submit" size="icon" aria-label="Send message" disabled={!input.trim()}>
                 {status.isLoading ? <Loader2 className="size-4 animate-spin" /> : <SendHorizonal className="size-4" />}
               </Button>
             )}

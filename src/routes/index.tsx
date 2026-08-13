@@ -20,19 +20,21 @@ import { WaterCursor } from "@/components/effects/WaterCursor";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "RAG AI Support Assistant — Grounded answers from your knowledge base" },
+      { title: "Retrieva AI — Grounded RAG Support Assistant" },
       {
         name: "description",
         content:
           "Upload your documentation and let an AI support assistant answer with cited, grounded responses. Vector search, live pipeline visibility and human escalation built in.",
       },
-      { property: "og:title", content: "RAG AI Support Assistant" },
+      { property: "og:title", content: "Retrieva AI — Grounded RAG Support Assistant" },
       {
         property: "og:description",
         content:
           "Grounded, citation-backed AI support answers over your own documents — with retrieval visibility and human escalation.",
       },
+      { property: "og:url", content: "https://retrievaai.lovable.app/" },
     ],
+    links: [{ rel: "canonical", href: "https://retrievaai.lovable.app/" }],
   }),
   component: Landing,
 });
