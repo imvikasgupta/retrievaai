@@ -24,7 +24,7 @@ export const Route = createFileRoute("/auth")({
   validateSearch: SearchSchema,
   head: () => ({
     meta: [
-      { title: "Sign in — Retrieva RAG AI Support Assistant" },
+      { title: "Sign in — Retrieva AI" },
       { name: "description", content: "Sign in to ask grounded questions against your Retrieva knowledge base." },
       { property: "og:title", content: "Sign in — Retrieva AI" },
       { property: "og:description", content: "Access the grounded AI support assistant for your knowledge base." },
