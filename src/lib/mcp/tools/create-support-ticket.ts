@@ -13,7 +13,8 @@ export default defineTool({
   },
   annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
   handler: async ({ question, notes }, ctx) => {
-    if (!ctx.isAuthenticated()) {
+    const userId = ctx.getUserId();
+    if (!ctx.isAuthenticated() || !userId) {
       return { content: [{ type: "text", text: "Not authenticated." }], isError: true };
     }
     const supabase = supabaseForUser(ctx);
@@ -24,7 +25,8 @@ export default defineTool({
     const { data, error } = await supabase
       .from("tickets")
       .insert({
-        user_id: ctx.getUserId(),
+        user_id: userId,
+
         question,
         transcript: transcript as never,
         sources: [] as never,
