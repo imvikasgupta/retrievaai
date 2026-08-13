@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.2",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://nnnlahkfdkualajpwvgw.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "retrieva-ai",
+      "version": "0.1.0",
+      "title": "Retrieva AI"
+    },
+    "tools": [
+      {
+        "name": "ask_knowledge_base",
+        "title": "Ask the knowledge base",
+        "description": "Ask a support question and get a grounded answer generated only from the signed-in user's Retrieva knowledge base, with the cited source documents.",
+        "annotations": {
+          "readOnlyHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "question": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000,
+              "description": "The support question to answer."
+            }
+          },
+          "required": [
+            "question"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "search_knowledge_base",
+        "title": "Search knowledge base",
+        "description": "Semantic search over the signed-in user's Retrieva knowledge base. Returns the most relevant document chunks with their source document, page and similarity score.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300,
+              "description": "What to search for."
+            },
+            "limit": {
+              "description": "Max chunks to return (default 5).",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            }
+          },
+          "required": [
+            "query"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_documents",
+        "title": "List knowledge base documents",
+        "description": "List the documents in the signed-in user's Retrieva knowledge base with their indexing status.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "create_support_ticket",
+        "title": "Escalate to a human agent",
+        "description": "Create a Retrieva support ticket for the signed-in user when the knowledge base cannot answer a question and a human should follow up.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "question": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000,
+              "description": "The unresolved question to escalate."
+            },
+            "notes": {
+              "description": "Optional context for the human agent.",
+              "type": "string",
+              "maxLength": 4000
+            }
+          },
+          "required": [
+            "question"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_support_tickets",
+        "title": "List support tickets",
+        "description": "List the signed-in user's escalated Retrieva support tickets and their status.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
