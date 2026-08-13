@@ -23,9 +23,9 @@ import { displayName, useAuth } from "@/hooks/useAuth";
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
     meta: [
-      { title: "Overview — NovaTech Assist" },
+      { title: "Overview — Retrieva AI" },
       { name: "description", content: "System status, knowledge base health and recent support activity." },
-      { property: "og:title", content: "Overview — NovaTech Assist" },
+      { property: "og:title", content: "Overview — Retrieva AI" },
       { property: "og:description", content: "Monitor your RAG pipeline, indexed documents and escalations." },
     ],
   }),
@@ -140,7 +140,7 @@ function DashboardPage() {
         {status.data && !status.data.aiConfigured && (
           <p className="mt-4 rounded-lg border border-warning/30 bg-warning/10 px-4 py-3 text-sm text-foreground">
             The AI service isn't reachable, so the assistant is running in <strong>Demo Mode</strong> with sample
-            NovaTech answers. Everything else in the product still works.
+            Retrieva answers. Everything else in the product still works.
           </p>
         )}
       </div>

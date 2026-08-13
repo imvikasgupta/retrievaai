@@ -81,13 +81,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "NovaTech RAG AI Support Assistant" },
+      { title: "Retrieva RAG AI Support Assistant" },
       {
         name: "description",
         content:
           "A grounded, citation-backed AI support assistant built on retrieval-augmented generation over your own knowledge base.",
       },
-      { name: "author", content: "NovaTech" },
+      { name: "author", content: "Retrieva" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

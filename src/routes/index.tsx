@@ -80,7 +80,7 @@ function Landing() {
             <span className="gradient-brand flex size-8 items-center justify-center rounded-lg text-brand-foreground">
               <Sparkle className="size-4" />
             </span>
-            <span className="font-display text-[15px] font-bold tracking-tight">NovaTech Assist</span>
+            <span className="font-display text-[15px] font-bold tracking-tight">Retrieva AI</span>
           </Link>
           <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
             <a href="#pipeline" className="transition-colors hover:text-foreground">
@@ -231,7 +231,7 @@ function Landing() {
             />
             <div className="relative">
               <h2 className="font-display text-3xl font-bold tracking-tight text-balance sm:text-4xl">
-                Try it with the NovaTech sample knowledge base
+                Try it with the Retrieva sample knowledge base
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
                 Five pre-loaded documents cover products, pricing, refunds, security and support. Ask a question and
@@ -250,7 +250,7 @@ function Landing() {
 
       <footer className="border-t border-border/60 py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 text-sm text-muted-foreground sm:flex-row">
-          <p>© {new Date().getFullYear()} NovaTech. Sample company for demonstration purposes.</p>
+          <p>© {new Date().getFullYear()} Retrieva. Sample company for demonstration purposes.</p>
           <p>Retrieval-augmented generation · pgvector · Grounded answers</p>
         </div>
       </footer>

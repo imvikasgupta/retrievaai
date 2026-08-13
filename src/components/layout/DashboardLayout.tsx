@@ -53,7 +53,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
           <Sparkle className="size-4" />
         </span>
         <span className="font-display text-[15px] font-bold tracking-tight text-sidebar-foreground">
-          NovaTech Assist
+          Retrieva AI
         </span>
       </Link>
 
@@ -119,7 +119,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
           <Button variant="ghost" size="icon" onClick={() => setMobileOpen((open) => !open)}>
             {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
           </Button>
-          <span className="font-display text-sm font-bold">NovaTech Assist</span>
+          <span className="font-display text-sm font-bold">Retrieva AI</span>
         </header>
         <main className="min-h-[calc(100vh-3.5rem)] lg:min-h-screen">{children}</main>
       </div>

@@ -10,9 +10,9 @@ import { listTickets } from "@/lib/kb.functions";
 export const Route = createFileRoute("/_authenticated/tickets")({
   head: () => ({
     meta: [
-      { title: "Escalations — NovaTech Assist" },
+      { title: "Escalations — Retrieva AI" },
       { name: "description", content: "Conversations handed off to a human agent with full transcripts." },
-      { property: "og:title", content: "Escalations — NovaTech Assist" },
+      { property: "og:title", content: "Escalations — Retrieva AI" },
       { property: "og:description", content: "Track support tickets escalated from the AI assistant." },
     ],
   }),
