@@ -48,26 +48,20 @@ const PIPELINE = [
   { icon: Quote, title: "Answer", copy: "The model answers strictly from retrieved context, with citations." },
 ];
 
-const FEATURES = [
+const TEAM = [
   {
-    icon: ShieldCheck,
-    title: "Grounded, never guessing",
-    copy: "The assistant answers only from retrieved context and says so plainly when the knowledge base has no answer.",
+    name: "Vikas Gupta",
+    year: "3rd year",
+    role: "UI/UX & RAG",
+    emoji: "🎨",
+    photo: vikasPhoto.url,
   },
   {
-    icon: Workflow,
-    title: "Transparent pipeline",
-    copy: "Watch embedding, retrieval and generation happen live, with chunk scores for every answer.",
-  },
-  {
-    icon: LifeBuoy,
-    title: "Human escalation",
-    copy: "One click turns an unresolved conversation into a support ticket with the full transcript attached.",
-  },
-  {
-    icon: Gauge,
-    title: "Knowledge control",
-    copy: "Inspect chunks, re-index documents and see exactly what the assistant can and cannot answer.",
+    name: "Vinayak Nandan",
+    year: "3rd year",
+    role: "Back-end",
+    emoji: "⚙️",
+    photo: vinayakPhoto.url,
   },
 ];
 
