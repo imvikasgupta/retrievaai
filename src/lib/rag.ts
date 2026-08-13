@@ -135,3 +135,5 @@ export const ESCALATION_MODELS = [
 ] as const;
 
 export const DEFAULT_ESCALATION_MODEL = ESCALATION_MODELS[0].id;
+
+export const ESCALATION_MODEL_IDS = ESCALATION_MODELS.map((m) => m.id) as unknown as [string, ...string[]];

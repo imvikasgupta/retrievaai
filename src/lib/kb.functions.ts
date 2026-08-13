@@ -6,12 +6,10 @@ import {
   chunkPages,
   cleanText,
   DEFAULT_RAG_SETTINGS,
-  ESCALATION_MODELS,
+  ESCALATION_MODEL_IDS,
   MAX_UPLOAD_BYTES,
   SUPPORTED_EXTENSIONS,
 } from "@/lib/rag";
-
-const ESCALATION_MODEL_IDS = ESCALATION_MODELS.map((m) => m.id) as unknown as [string, ...string[]];
 
 const EMBED_BATCH = 64;
 
