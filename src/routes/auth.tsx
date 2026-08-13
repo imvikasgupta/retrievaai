@@ -53,7 +53,9 @@ function AuthPage() {
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [checkEmail, setCheckEmail] = useState(false);
+  const [otpStep, setOtpStep] = useState(false);
+  const [otp, setOtp] = useState("");
+  const [resending, setResending] = useState(false);
 
   useEffect(() => {
     if (!loading && isAuthenticated) {
