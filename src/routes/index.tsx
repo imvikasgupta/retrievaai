@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, ClientOnly } from "@tanstack/react-router";
 import {
   ArrowRight,
   Blocks,
@@ -15,6 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/hooks/useAuth";
+import { WaterCursor } from "@/components/effects/WaterCursor";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -74,10 +75,13 @@ function Landing() {
 
   return (
     <div className="min-h-screen bg-background">
+      <ClientOnly>
+        <WaterCursor />
+      </ClientOnly>
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <Link to="/" className="flex items-center gap-2.5">
-            <span className="gradient-brand flex size-8 items-center justify-center rounded-lg text-brand-foreground">
+            <span className="flex size-8 items-center justify-center rounded-lg bg-brand text-brand-foreground">
               <Sparkle className="size-4" />
             </span>
             <span className="font-display text-[15px] font-bold tracking-tight">Retrieva AI</span>
@@ -112,25 +116,17 @@ function Landing() {
       <main>
         {/* Hero */}
         <section className="relative overflow-hidden">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 -top-40 h-[420px] opacity-60 blur-3xl"
-            style={{
-              background:
-                "radial-gradient(45% 60% at 50% 50%, color-mix(in oklab, var(--brand) 30%, transparent), transparent 70%)",
-            }}
-          />
           <div className="relative mx-auto max-w-6xl px-6 pt-20 pb-16 text-center">
             <Badge variant="secondary" className="animate-rise gap-2 rounded-full px-3 py-1 text-xs font-medium">
               <span className="size-1.5 rounded-full bg-success" />
-              Retrieval-augmented · Cited answers · No hallucinations
+              Cited answers from your own documents
             </Badge>
             <h1 className="animate-rise font-display mx-auto mt-6 max-w-3xl text-4xl leading-[1.08] font-extrabold tracking-tight text-balance sm:text-6xl">
-              Support answers your customers can <span className="text-gradient-brand">actually trust</span>
+              Support answers backed by <span className="text-brand">your documents</span>
             </h1>
             <p className="animate-rise mx-auto mt-5 max-w-2xl text-base text-pretty text-muted-foreground sm:text-lg">
-              Upload your documentation once. Every answer is retrieved from your own knowledge base, cited back to the
-              source document, and escalated to a human the moment the answer isn't there.
+              Upload your documentation once. Answers are retrieved from your knowledge base, cited to the source
+              document, and passed to a human when the answer isn't there.
             </p>
             <div className="animate-rise mt-8 flex flex-wrap items-center justify-center gap-3">
               <Button asChild size="lg" className="gap-2">
@@ -148,7 +144,7 @@ function Landing() {
               {[
                 { value: "1536-dim", label: "OpenAI embeddings" },
                 { value: "pgvector", label: "Similarity search in Postgres" },
-                { value: "100%", label: "Answers cited to a source chunk" },
+                { value: "Cited", label: "Every answer maps to a source chunk" },
               ].map((stat) => (
                 <div key={stat.label} className="surface-panel px-5 py-6 text-left">
                   <p className="font-display text-2xl font-bold tracking-tight">{stat.value}</p>
@@ -167,8 +163,7 @@ function Landing() {
               From raw document to grounded answer
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Nothing is hidden. Each stage runs server-side and reports back to the interface in real time so you can
-              see precisely where an answer came from.
+              Each stage runs server-side and reports back in real time, so you can see where an answer came from.
             </p>
           </div>
 
@@ -198,11 +193,11 @@ function Landing() {
               <div>
                 <p className="text-sm font-semibold text-brand">Why teams pick it</p>
                 <h2 className="font-display mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-                  Built for support teams who can't afford a wrong answer
+                  Built for support teams
                 </h2>
                 <p className="mt-3 text-muted-foreground">
-                  Every response carries its evidence. When the knowledge base falls short, the assistant hands the
-                  conversation to a person instead of inventing something.
+                  Every response carries its evidence. When the knowledge base falls short, the conversation goes to a
+                  person.
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
@@ -221,21 +216,13 @@ function Landing() {
         {/* Demo CTA */}
         <section id="demo" className="mx-auto max-w-6xl px-6 py-20">
           <div className="surface-panel relative overflow-hidden px-8 py-14 text-center">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 opacity-70"
-              style={{
-                background:
-                  "radial-gradient(60% 80% at 50% 0%, color-mix(in oklab, var(--violet) 18%, transparent), transparent 70%)",
-              }}
-            />
             <div className="relative">
               <h2 className="font-display text-3xl font-bold tracking-tight text-balance sm:text-4xl">
                 Try it with the Retrieva sample knowledge base
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-                Five pre-loaded documents cover products, pricing, refunds, security and support. Ask a question and
-                watch the retrieval happen — then upload your own files.
+Five pre-loaded documents cover products, pricing, refunds, security and support. Ask a question, then upload
+                your own files.
               </p>
               <Button asChild size="lg" className="mt-8 gap-2">
                 <Link to={primaryTo}>
@@ -250,8 +237,8 @@ function Landing() {
 
       <footer className="border-t border-border/60 py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 text-sm text-muted-foreground sm:flex-row">
-          <p>© {new Date().getFullYear()} Retrieva. Sample company for demonstration purposes.</p>
-          <p>Retrieval-augmented generation · pgvector · Grounded answers</p>
+          <p>© {new Date().getFullYear()} Retrieva AI</p>
+          <p>Retrieval-augmented generation · pgvector</p>
         </div>
       </footer>
     </div>
