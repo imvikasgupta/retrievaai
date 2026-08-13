@@ -32,9 +32,9 @@ export const Route = createFileRoute("/_authenticated/assistant")({
   validateSearch: z.object({ c: z.string().uuid().optional() }),
   head: () => ({
     meta: [
-      { title: "AI Assistant — NovaTech Assist" },
+      { title: "AI Assistant — Retrieva AI" },
       { name: "description", content: "Ask questions and get grounded answers cited to your knowledge base." },
-      { property: "og:title", content: "AI Assistant — NovaTech Assist" },
+      { property: "og:title", content: "AI Assistant — Retrieva AI" },
       { property: "og:description", content: "Grounded, citation-backed answers from your documents." },
     ],
   }),
@@ -371,7 +371,7 @@ function AssistantPage() {
 
                     {message.demo && (
                       <p className="text-xs text-muted-foreground">
-                        Sample answer generated in Demo Mode from the NovaTech example corpus.
+                        Sample answer generated in Demo Mode from the Retrieva example corpus.
                       </p>
                     )}
                   </div>

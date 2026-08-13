@@ -7,13 +7,11 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { ClientOnly } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
-import { WaterCursor } from "@/components/effects/WaterCursor";
 import { supabase } from "@/integrations/supabase/client";
 
 function NotFoundComponent() {
@@ -81,13 +79,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "NovaTech RAG AI Support Assistant" },
+      { title: "Retrieva AI — Grounded Support Answers" },
       {
         name: "description",
         content:
           "A grounded, citation-backed AI support assistant built on retrieval-augmented generation over your own knowledge base.",
       },
-      { name: "author", content: "NovaTech" },
+      { name: "author", content: "Retrieva" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -139,9 +137,6 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-      <ClientOnly>
-        <WaterCursor />
-      </ClientOnly>
       <Toaster position="top-center" richColors />
     </QueryClientProvider>
   );

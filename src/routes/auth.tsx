@@ -24,9 +24,9 @@ export const Route = createFileRoute("/auth")({
   validateSearch: SearchSchema,
   head: () => ({
     meta: [
-      { title: "Sign in — NovaTech RAG AI Support Assistant" },
-      { name: "description", content: "Sign in to ask grounded questions against your NovaTech knowledge base." },
-      { property: "og:title", content: "Sign in — NovaTech Assist" },
+      { title: "Sign in — Retrieva AI" },
+      { name: "description", content: "Sign in to ask grounded questions against your Retrieva knowledge base." },
+      { property: "og:title", content: "Sign in — Retrieva AI" },
       { property: "og:description", content: "Access the grounded AI support assistant for your knowledge base." },
     ],
   }),
@@ -81,7 +81,7 @@ function AuthPage() {
           setCheckEmail(true);
           return;
         }
-        toast.success("Welcome to NovaTech Assist");
+        toast.success("Welcome to Retrieva AI");
       } else {
         const { error } = await supabase.auth.signInWithPassword({
           email: parsed.data.email,

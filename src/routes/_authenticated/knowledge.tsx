@@ -49,9 +49,9 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/_authenticated/knowledge")({
   head: () => ({
     meta: [
-      { title: "Knowledge Base — NovaTech Assist" },
+      { title: "Knowledge Base — Retrieva AI" },
       { name: "description", content: "Upload, inspect and re-index the documents powering your AI support answers." },
-      { property: "og:title", content: "Knowledge Base — NovaTech Assist" },
+      { property: "og:title", content: "Knowledge Base — Retrieva AI" },
       { property: "og:description", content: "Manage the documents behind every grounded AI answer." },
     ],
   }),

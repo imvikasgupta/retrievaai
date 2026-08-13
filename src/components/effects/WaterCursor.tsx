@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Water ripple cursor effect.
@@ -19,8 +19,20 @@ export function WaterCursor({
   strength?: number;
 }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [isDark, setIsDark] = useState(false);
+
+  // The effect is dark-mode only, so track the theme class on <html>.
+  useEffect(() => {
+    const root = document.documentElement;
+    const read = () => setIsDark(root.classList.contains("dark"));
+    read();
+    const observer = new MutationObserver(read);
+    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
+    if (!isDark) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -39,10 +51,7 @@ export function WaterCursor({
     let raf = 0;
 
     // Ripple tint pulled from the design tokens so it matches the theme.
-    const styles = getComputedStyle(document.documentElement);
-    const isDark = document.documentElement.classList.contains("dark");
-    const tint = isDark ? [150, 200, 255] : [40, 110, 220];
-    void styles;
+    const tint = [150, 200, 255];
 
     const resize = () => {
       width = window.innerWidth;
@@ -137,8 +146,9 @@ export function WaterCursor({
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerdown", onPointerDown);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
     };
-  }, [scale, damping, strength]);
+  }, [scale, damping, strength, isDark]);
 
   return (
     <canvas
