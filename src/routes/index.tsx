@@ -5,17 +5,15 @@ import {
   BookOpenCheck,
   Database,
   FileSearch,
-  Gauge,
-  LifeBuoy,
   Quote,
-  ShieldCheck,
   Sparkle,
-  Workflow,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/hooks/useAuth";
 import { WaterCursor } from "@/components/effects/WaterCursor";
+import vikasPhoto from "@/assets/vikas.jpg.asset.json";
+import vinayakPhoto from "@/assets/vinayak.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
