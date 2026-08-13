@@ -57,7 +57,7 @@ const TEAM = [
   {
     name: "Vaibhav Srivastav",
     year: "3rd year",
-    role: "Back-end",
+    role: "Front-end",
     emoji: "⚙️",
     photo: vinayakPhoto.url,
   },
