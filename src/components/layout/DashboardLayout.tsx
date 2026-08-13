@@ -116,7 +116,13 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
 
       <div className="lg:pl-64">
         <header className="flex h-14 items-center gap-3 border-b border-border/60 px-4 lg:hidden">
-          <Button variant="ghost" size="icon" onClick={() => setMobileOpen((open) => !open)}>
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen((open) => !open)}
+          >
             {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
           </Button>
           <span className="font-display text-sm font-bold">Retrieva AI</span>
