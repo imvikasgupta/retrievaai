@@ -50,8 +50,8 @@ export function WaterCursor({
     let image: ImageData | null = null;
     let raf = 0;
 
-    // Ripple tint pulled from the design tokens so it matches the theme.
-    const tint = [150, 200, 255];
+    // Soft watercolour aqua tint.
+    const tint = [86, 176, 196];
 
     const resize = () => {
       width = window.innerWidth;
@@ -125,7 +125,7 @@ export function WaterCursor({
           data[p] = tint[0]! * shade;
           data[p + 1] = tint[1]! * shade;
           data[p + 2] = tint[2]! * shade;
-          data[p + 3] = alpha * 190;
+          data[p + 3] = alpha * 130;
         }
       }
       ctx.putImageData(image, 0, 0);
@@ -154,7 +154,7 @@ export function WaterCursor({
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-[60] h-full w-full mix-blend-screen"
+      className="pointer-events-none fixed inset-0 z-0 h-full w-full mix-blend-screen"
     />
   );
 }

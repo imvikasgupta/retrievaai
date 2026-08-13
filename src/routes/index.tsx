@@ -113,7 +113,7 @@ function Landing() {
         </div>
       </header>
 
-      <main>
+      <main className="relative z-10">
         {/* Hero */}
         <section className="relative overflow-hidden">
           <div className="relative mx-auto max-w-6xl px-6 pt-20 pb-16 text-center">
@@ -235,9 +235,16 @@ Five pre-loaded documents cover products, pricing, refunds, security and support
         </section>
       </main>
 
-      <footer className="border-t border-border/60 py-8">
+      <footer className="relative z-10 border-t border-border/60 bg-background py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 text-sm text-muted-foreground sm:flex-row">
           <p>© {new Date().getFullYear()} Retrieva AI</p>
+          <p className="flex items-center gap-1.5">
+            Made by
+            <span className="group relative inline-block cursor-default font-semibold text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-brand">
+              Vikas Gupta
+              <span className="absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-brand transition-transform duration-300 group-hover:origin-left group-hover:scale-x-100" />
+            </span>
+          </p>
           <p>Retrieval-augmented generation · pgvector</p>
         </div>
       </footer>
