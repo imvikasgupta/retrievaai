@@ -1,7 +1,17 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { z } from "zod";
-import { chunkPages, cleanText, MAX_UPLOAD_BYTES, SUPPORTED_EXTENSIONS } from "@/lib/rag";
+import {
+  buildContext,
+  chunkPages,
+  cleanText,
+  DEFAULT_RAG_SETTINGS,
+  ESCALATION_MODELS,
+  MAX_UPLOAD_BYTES,
+  SUPPORTED_EXTENSIONS,
+} from "@/lib/rag";
+
+const ESCALATION_MODEL_IDS = ESCALATION_MODELS.map((m) => m.id) as unknown as [string, ...string[]];
 
 const EMBED_BATCH = 64;
 
@@ -373,4 +383,70 @@ export const listTickets = createServerFn({ method: "GET" })
       .order("created_at", { ascending: false });
     if (error) throw new Error("Could not load tickets.");
     return data ?? [];
+  });
+
+/** Draft a grounded reply for an escalated ticket with a chosen LLM. */
+export const draftTicketReply = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) =>
+    z
+      .object({
+        ticketId: z.string().uuid(),
+        model: z.enum(ESCALATION_MODEL_IDS),
+      })
+      .parse(input),
+  )
+  .handler(async ({ data, context }) => {
+    const { isAiConfigured, embedQuery, completeChat } = await import("@/lib/ai.server");
+    if (!isAiConfigured()) throw new Error("AI service is not available right now.");
+
+    const { data: ticket, error } = await context.supabase
+      .from("tickets")
+      .select("id, question, transcript")
+      .eq("id", data.ticketId)
+      .maybeSingle();
+    if (error || !ticket) throw new Error("Ticket not found.");
+
+    const embedding = await embedQuery(ticket.question);
+    const { data: matches } = await context.supabase.rpc("match_chunks", {
+      query_embedding: JSON.stringify(embedding) as unknown as string,
+      match_count: DEFAULT_RAG_SETTINGS.topK,
+      min_similarity: DEFAULT_RAG_SETTINGS.similarityThreshold,
+    });
+
+    const sources = (matches ?? []).map((m) => ({
+      chunkId: m.chunk_id,
+      documentId: m.document_id,
+      documentName: m.document_name,
+      fileType: m.file_type,
+      pageNumber: m.page_number,
+      content: m.content,
+      similarity: m.similarity,
+    }));
+
+    const transcript = Array.isArray(ticket.transcript)
+      ? (ticket.transcript as { role?: string; content?: string }[])
+          .map((m) => `${m.role ?? "user"}: ${m.content ?? ""}`)
+          .join("\n")
+          .slice(0, 6000)
+      : "";
+
+    const reply = await completeChat(
+      [
+        {
+          role: "system",
+          content:
+            "You are a senior support agent drafting a reply to an escalated ticket. Use only the retrieved knowledge-base context. If the context does not cover the question, say what is missing and suggest the next step. Be concise, warm and professional. End with a short next-step line.",
+        },
+        {
+          role: "user",
+          content: `Customer question: ${ticket.question}\n\nConversation so far:\n${transcript || "(none)"}\n\nRetrieved knowledge-base context:\n\n${
+            sources.length ? buildContext(sources) : "(no relevant context found)"
+          }`,
+        },
+      ],
+      data.model,
+    );
+
+    return { reply, sources, model: data.model, grounded: sources.length > 0 };
   });
