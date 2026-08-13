@@ -185,21 +185,36 @@ function Landing() {
           <div className="mx-auto max-w-6xl px-6">
             <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
               <div>
-                <p className="text-sm font-semibold text-brand">Why teams pick it</p>
+                <p className="text-sm font-semibold text-brand">The team 👋</p>
                 <h2 className="font-display mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-                  Built for support teams
+                  Built by two students
                 </h2>
                 <p className="mt-3 text-muted-foreground">
-                  Every response carries its evidence. When the knowledge base falls short, the conversation goes to a
-                  person.
+                  Design, retrieval and backend — shipped end to end. 🚀
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
-                {FEATURES.map((feature) => (
-                  <div key={feature.title} className="surface-panel p-5">
-                    <feature.icon className="size-5 text-brand" />
-                    <h3 className="font-display mt-3 text-sm font-semibold">{feature.title}</h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{feature.copy}</p>
+                {TEAM.map((member) => (
+                  <div
+                    key={member.name}
+                    className="surface-panel group animate-rise relative overflow-hidden p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift"
+                  >
+                    <div className="relative mx-auto size-24 overflow-hidden rounded-2xl ring-2 ring-border transition-all duration-300 group-hover:rotate-2 group-hover:scale-105 group-hover:ring-brand">
+                      <img
+                        src={member.photo}
+                        alt={`${member.name} — ${member.role}`}
+                        loading="lazy"
+                        className="size-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                    <h3 className="font-display mt-4 text-center text-sm font-semibold">
+                      {member.name}
+                    </h3>
+                    <p className="mt-1 text-center text-sm text-muted-foreground">
+                      {member.emoji} {member.role}
+                    </p>
+                    <p className="mt-0.5 text-center text-xs text-muted-foreground">🎓 {member.year}</p>
+                    <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-brand transition-transform duration-300 group-hover:scale-x-100" />
                   </div>
                 ))}
               </div>
