@@ -1,4 +1,4 @@
-import { auth, defineMcp, type AnyToolDefinition } from "@lovable.dev/mcp-js";
+import { auth, defineMcp } from "@lovable.dev/mcp-js";
 import askKnowledgeBase from "./tools/ask-knowledge-base";
 import searchKnowledgeBase from "./tools/search-knowledge-base";
 import listDocuments from "./tools/list-documents";
@@ -24,5 +24,5 @@ export default defineMcp({
     listDocuments,
     createSupportTicket,
     listSupportTickets,
-  ] as AnyToolDefinition[],
+  ] as never,
 });
