@@ -218,7 +218,7 @@ function Landing() {
           <div className="surface-panel relative overflow-hidden px-8 py-14 text-center">
             <div className="relative">
               <h2 className="font-display text-3xl font-bold tracking-tight text-balance sm:text-4xl">
-                Try it with the Retrieva sample knowledge base
+                Try it with the sample knowledge base
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
 Five pre-loaded documents cover products, pricing, refunds, security and support. Ask a question, then upload
