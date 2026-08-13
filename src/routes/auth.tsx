@@ -43,6 +43,10 @@ function AuthPage() {
   const search = useSearch({ from: "/auth" });
   const { isAuthenticated, loading } = useAuth();
   const destination = safePath(search.redirect);
+  const go = () => {
+    if (destination.includes("?")) window.location.assign(destination);
+    else navigate({ to: destination, replace: true });
+  };
 
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
@@ -53,9 +57,10 @@ function AuthPage() {
 
   useEffect(() => {
     if (!loading && isAuthenticated) {
-      navigate({ to: destination, replace: true });
+      go();
     }
-  }, [loading, isAuthenticated, destination, navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, isAuthenticated, destination]);
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -102,14 +107,15 @@ function AuthPage() {
     setSubmitting(true);
     try {
       const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: window.location.origin,
+        redirect_uri: `${window.location.origin}${destination}`,
       });
+
       if (result.error) {
         toast.error("Google sign-in failed. Please try again.");
         return;
       }
       if (result.redirected) return;
-      navigate({ to: destination, replace: true });
+      go();
     } finally {
       setSubmitting(false);
     }
