@@ -162,21 +162,87 @@ function Landing() {
           </div>
 
           <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {PIPELINE.map((step, index) => (
-              <div key={step.title} className="surface-panel group relative overflow-hidden p-6">
-                <div className="flex items-center justify-between">
-                  <span className="flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
-                    <step.icon className="size-5" />
-                  </span>
-                  <span className="font-display text-xs font-semibold text-muted-foreground">
-                    0{index + 1}
-                  </span>
+            {PIPELINE.map((step, index) => {
+              const isLast = index === PIPELINE.length - 1;
+              const arrowDirLg = index % 3 === 2 || isLast ? "down" : "right";
+              const arrowDirMd = index % 2 === 1 || isLast ? "down" : "right";
+              return (
+                <div
+                  key={step.title}
+                  className="surface-panel pipeline-card-hover group relative p-6"
+                  style={{ animationDelay: `${index * 60}ms` }}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand transition-colors duration-300 group-hover:bg-brand/20">
+                      <step.icon className="size-5" />
+                    </span>
+                    <span className="font-display text-xs font-semibold text-muted-foreground">
+                      0{index + 1}
+                    </span>
+                  </div>
+                  <h3 className="font-display mt-4 text-base font-semibold transition-colors duration-300 group-hover:text-brand">
+                    {step.title}
+                  </h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{step.copy}</p>
+
+                  {/* Flow arrow to next step */}
+                  {!isLast && (
+                    <>
+                      {/* Desktop arrow */}
+                      <span
+                        className={`pointer-events-none absolute z-10 hidden text-brand opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:block ${
+                          arrowDirLg === "right"
+                            ? "right-3 top-1/2 -translate-y-1/2"
+                            : "bottom-3 left-1/2 -translate-x-1/2"
+                        }`}
+                      >
+                        <span className="flex size-7 items-center justify-center rounded-full bg-brand/10 shadow-sm backdrop-blur-sm">
+                          <ArrowRight
+                            className={`size-4 transition-transform duration-300 group-hover:animate-arrow-travel ${
+                              arrowDirLg === "down" ? "rotate-90" : ""
+                            }`}
+                            style={{
+                              [arrowDirLg === "right" ? "--arrow-travel-x" : "--arrow-travel-y"]:
+                                arrowDirLg === "right" ? "1rem" : "1rem",
+                              [arrowDirLg === "right" ? "--arrow-travel-y" : "--arrow-travel-x"]: "0",
+                            }}
+                          />
+                        </span>
+                      </span>
+                      {/* Tablet arrow */}
+                      <span
+                        className={`pointer-events-none absolute z-10 hidden text-brand opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:block lg:hidden ${
+                          arrowDirMd === "right"
+                            ? "right-3 top-1/2 -translate-y-1/2"
+                            : "bottom-3 left-1/2 -translate-x-1/2"
+                        }`}
+                      >
+                        <span className="flex size-7 items-center justify-center rounded-full bg-brand/10 shadow-sm backdrop-blur-sm">
+                          <ArrowRight
+                            className={`size-4 transition-transform duration-300 group-hover:animate-arrow-travel ${
+                              arrowDirMd === "down" ? "rotate-90" : ""
+                            }`}
+                            style={{
+                              [arrowDirMd === "right" ? "--arrow-travel-x" : "--arrow-travel-y"]:
+                                arrowDirMd === "right" ? "1rem" : "1rem",
+                              [arrowDirMd === "right" ? "--arrow-travel-y" : "--arrow-travel-x"]: "0",
+                            }}
+                          />
+                        </span>
+                      </span>
+                      {/* Mobile arrow */}
+                      <span className="pointer-events-none absolute bottom-3 left-1/2 z-10 block -translate-x-1/2 text-brand opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:hidden">
+                        <span className="flex size-7 items-center justify-center rounded-full bg-brand/10 shadow-sm backdrop-blur-sm">
+                          <ArrowRight className="size-4 rotate-90 transition-transform duration-300 group-hover:animate-arrow-travel-down" />
+                        </span>
+                      </span>
+                    </>
+                  )}
+
+                  <div className="animate-flow-line absolute inset-x-0 bottom-0 h-px opacity-0 transition-opacity group-hover:opacity-100" />
                 </div>
-                <h3 className="font-display mt-4 text-base font-semibold">{step.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{step.copy}</p>
-                <div className="animate-flow-line absolute inset-x-0 bottom-0 h-px opacity-0 transition-opacity group-hover:opacity-100" />
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 

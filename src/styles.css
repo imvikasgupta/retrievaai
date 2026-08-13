@@ -227,6 +227,18 @@
   50% { opacity: 1; transform: translateY(-2px); }
 }
 
+@keyframes rag-arrow-travel {
+  0% { transform: translate(0, 0); opacity: 0.6; }
+  50% { transform: translate(var(--arrow-travel-x, 1.5rem), var(--arrow-travel-y, 0)); opacity: 1; }
+  100% { transform: translate(var(--arrow-travel-x, 1.5rem), var(--arrow-travel-y, 0)); opacity: 1; }
+}
+
+@keyframes rag-arrow-travel-down {
+  0% { transform: translate(-50%, 0); opacity: 0.6; }
+  50% { transform: translate(-50%, 1.25rem); opacity: 1; }
+  100% { transform: translate(-50%, 1.25rem); opacity: 1; }
+}
+
 @utility animate-rise {
   animation: rag-rise 0.35s ease-out both;
 }
@@ -235,4 +247,24 @@
   background-image: linear-gradient(90deg, transparent, var(--brand), transparent);
   background-size: 200% 100%;
   animation: rag-flow 2.2s linear infinite;
+}
+
+@utility animate-arrow-travel {
+  animation: rag-arrow-travel 0.7s ease-in-out both;
+}
+
+@utility animate-arrow-travel-down {
+  animation: rag-arrow-travel-down 0.7s ease-in-out both;
+}
+
+@utility pipeline-card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+@layer components {
+  .pipeline-card-hover:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: var(--shadow-lift);
+    border-color: color-mix(in oklab, var(--brand) 50%, var(--border));
+  }
 }
