@@ -55,7 +55,7 @@ const TEAM = [
     photo: vikasPhoto.url,
   },
   {
-    name: "Vinayak Nandan",
+    name: "Vaibhav Srivastav",
     year: "3rd year",
     role: "Back-end",
     emoji: "⚙️",
