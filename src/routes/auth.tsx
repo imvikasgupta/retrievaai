@@ -8,6 +8,7 @@ import { lovable } from "@/integrations/lovable/index";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/useAuth";
 
@@ -53,7 +54,9 @@ function AuthPage() {
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [checkEmail, setCheckEmail] = useState(false);
+  const [otpStep, setOtpStep] = useState(false);
+  const [otp, setOtp] = useState("");
+  const [resending, setResending] = useState(false);
 
   useEffect(() => {
     if (!loading && isAuthenticated) {
@@ -77,13 +80,14 @@ function AuthPage() {
           email: parsed.data.email,
           password: parsed.data.password,
           options: {
-            emailRedirectTo: `${window.location.origin}${destination}`,
             data: { full_name: fullName.trim().slice(0, 80) || undefined },
           },
         });
         if (error) throw error;
         if (!data.session) {
-          setCheckEmail(true);
+          setOtp("");
+          setOtpStep(true);
+          toast.success("We sent a 6-digit code to your email");
           return;
         }
         toast.success("Welcome to Retrieva AI");
@@ -121,20 +125,91 @@ function AuthPage() {
     }
   }
 
-  if (checkEmail) {
+  async function handleVerifyOtp(event: React.FormEvent) {
+    event.preventDefault();
+    if (otp.length !== 6) {
+      toast.error("Enter the 6-digit code from your email");
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const { error } = await supabase.auth.verifyOtp({
+        email: email.trim(),
+        token: otp,
+        type: "signup",
+      });
+      if (error) throw error;
+      toast.success("Account verified — welcome to Retrieva AI");
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Verification failed";
+      toast.error(message.includes("expired") ? "That code expired. Send a new one." : message);
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  async function handleResendOtp() {
+    setResending(true);
+    try {
+      const { error } = await supabase.auth.resend({ type: "signup", email: email.trim() });
+      if (error) throw error;
+      toast.success("New code sent");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Could not resend the code");
+    } finally {
+      setResending(false);
+    }
+  }
+
+  if (otpStep) {
     return (
       <Shell>
-        <h1 className="font-display text-2xl font-bold tracking-tight">Confirm your email</h1>
+        <h1 className="font-display text-2xl font-bold tracking-tight">Enter your code</h1>
         <p className="mt-3 text-sm text-muted-foreground">
-          We sent a confirmation link to <span className="font-medium text-foreground">{email}</span>. Click it to
-          activate your account, then come back and sign in.
+          We sent a 6-digit verification code to{" "}
+          <span className="font-medium text-foreground">{email}</span>. Enter it below to finish creating your
+          account — your password is already set.
         </p>
-        <Button variant="outline" className="mt-6 w-full" onClick={() => setCheckEmail(false)}>
-          Back to sign in
-        </Button>
+        <form onSubmit={handleVerifyOtp} className="mt-6 space-y-5">
+          <div className="flex justify-center">
+            <InputOTP maxLength={6} value={otp} onChange={setOtp} aria-label="Verification code">
+              <InputOTPGroup>
+                <InputOTPSlot index={0} />
+                <InputOTPSlot index={1} />
+                <InputOTPSlot index={2} />
+                <InputOTPSlot index={3} />
+                <InputOTPSlot index={4} />
+                <InputOTPSlot index={5} />
+              </InputOTPGroup>
+            </InputOTP>
+          </div>
+          <Button type="submit" className="w-full" disabled={submitting || otp.length !== 6}>
+            {submitting && <Loader2 className="size-4 animate-spin" />}
+            Verify and continue
+          </Button>
+        </form>
+        <div className="mt-4 flex items-center justify-between text-sm">
+          <button
+            type="button"
+            onClick={handleResendOtp}
+            disabled={resending}
+            className="text-brand transition-opacity hover:opacity-80 disabled:opacity-50"
+          >
+            {resending ? "Sending…" : "Resend code"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setOtpStep(false)}
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Use a different email
+          </button>
+        </div>
       </Shell>
     );
   }
+
+
 
   return (
     <Shell>
