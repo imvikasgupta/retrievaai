@@ -99,7 +99,7 @@ function Landing() {
             </Button>
             <Button asChild size="sm">
               <Link to={primaryTo}>
-                Try the assistant
+                Try the RAG Assistant
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
@@ -301,7 +301,7 @@ Five pre-loaded documents cover products, pricing, refunds, security and support
               </p>
               <Button asChild size="lg" className="mt-8 gap-2">
                 <Link to={primaryTo}>
-                  Open the assistant
+                  Open the RAG Assistant
                   <ArrowRight className="size-4" />
                 </Link>
               </Button>
