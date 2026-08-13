@@ -99,7 +99,7 @@ function Landing() {
             </Button>
             <Button asChild size="sm">
               <Link to={primaryTo}>
-                Try the RAG Assistant
+                Try the RAGassistant
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
