@@ -144,9 +144,9 @@ function Landing() {
 
             <div className="mt-14 grid gap-4 sm:grid-cols-3">
               {[
-                { value: "1536-dim", label: "OpenAI embeddings" },
-                { value: "pgvector", label: "Similarity search in Postgres" },
-                { value: "Cited", label: "Every answer maps to a source chunk" },
+                { value: "AI", label: "OpenAI embeddings" },
+                { value: "RAG", label: "Similarity search in Postgres" },
+                { value: "Selected", label: "Every answer maps to a source chunk" },
               ].map((stat) => (
                 <div key={stat.label} className="surface-panel px-5 py-6 text-left">
                   <p className="font-display text-2xl font-bold tracking-tight">{stat.value}</p>
