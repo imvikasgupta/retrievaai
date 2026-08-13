@@ -1,0 +1,2 @@
+UPDATE public.documents SET name = replace(replace(replace(replace(replace(name,'NovaTech','Retrieva'),'NovaDesk','RetrievaDesk'),'NovaFlow','RetrievaFlow'),'NovaInsight','RetrievaInsight'),'NovaConnect','RetrievaConnect') WHERE name ILIKE '%nova%';
+UPDATE public.document_chunks SET content = replace(replace(replace(replace(replace(replace(content,'NovaTech','Retrieva'),'NovaDesk','RetrievaDesk'),'NovaFlow','RetrievaFlow'),'NovaInsight','RetrievaInsight'),'NovaConnect','RetrievaConnect'),'novatech.com','retrieva.ai') WHERE content ILIKE '%nova%';
