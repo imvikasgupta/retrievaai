@@ -99,6 +99,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://retrievaai.lovable.app/#organization",
+              name: "Retrieva AI",
+              url: "https://retrievaai.lovable.app/",
+              description:
+                "Retrieva AI is a retrieval-augmented AI support assistant that answers questions from your own documentation with citations.",
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://retrievaai.lovable.app/#website",
+              name: "Retrieva AI",
+              url: "https://retrievaai.lovable.app/",
+              publisher: { "@id": "https://retrievaai.lovable.app/#organization" },
+              description:
+                "Grounded, citation-backed AI support answers built on retrieval-augmented generation over your own knowledge base.",
+            },
+          ],
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
