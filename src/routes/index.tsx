@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/hooks/useAuth";
 import { WaterCursor } from "@/components/effects/WaterCursor";
+import { trackCtaClick } from "@/lib/analytics";
 import vikasPhoto from "@/assets/vikas.jpg.asset.json";
 import vinayakPhoto from "@/assets/vinayak.jpg.asset.json";
 
@@ -98,7 +99,10 @@ function Landing() {
               </Link>
             </Button>
             <Button asChild size="sm">
-              <Link to={primaryTo}>
+              <Link
+                to={primaryTo}
+                onClick={() => trackCtaClick("try_the_rag_assistant", "Try the RAGassistant", "header")}
+              >
                 Try the RAGassistant
                 <ArrowRight className="size-4" />
               </Link>
@@ -300,7 +304,12 @@ Five pre-loaded documents cover products, pricing, refunds, security and support
                 your own files.
               </p>
               <Button asChild size="lg" className="mt-8 gap-2">
-                <Link to={primaryTo}>
+                <Link
+                  to={primaryTo}
+                  onClick={() =>
+                    trackCtaClick("open_the_rag_assistant", "Open the RAG Assistant", "demo_section")
+                  }
+                >
                   Open the RAG Assistant
                   <ArrowRight className="size-4" />
                 </Link>
