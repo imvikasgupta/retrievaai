@@ -1,22 +1,21 @@
-# Welcome to your Lovable project
+# Retrieva AI
 
-This project was built with [Lovable](https://lovable.dev).
+A retrieval-augmented AI support assistant that answers questions from your own
+documentation with citations.
 
-## Build with Lovable
+## Features
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- Knowledge base ingestion (PDF, DOCX, text) with chunking and embeddings
+- pgvector similarity search with a visualized RAG pipeline
+- Grounded, citation-backed answers
+- Human escalation with AI-drafted replies
+- Agent integrations over MCP
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Requires Node.js and npm.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
 npm i
 npm run dev
 ```
@@ -27,3 +26,4 @@ npm run dev
 - TypeScript
 - React
 - Tailwind CSS
+- Postgres + pgvector
