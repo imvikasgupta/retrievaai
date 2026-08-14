@@ -32,7 +32,16 @@ export const DEFAULT_RAG_SETTINGS: RagSettings = {
   chunkOverlap: 150,
 };
 
-export const SUPPORTED_EXTENSIONS = ["pdf", "docx", "txt", "md", "markdown", "csv"] as const;
+export const SUPPORTED_EXTENSIONS = [
+  "pdf",
+  "docx",
+  "txt",
+  "md",
+  "markdown",
+  "csv",
+  "xlsx",
+  "xls",
+] as const;
 export const MAX_UPLOAD_BYTES = 15 * 1024 * 1024;
 
 export const SUGGESTED_QUESTIONS = [
