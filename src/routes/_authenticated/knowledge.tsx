@@ -207,7 +207,7 @@ function KnowledgePage() {
           ref={inputRef}
           type="file"
           multiple
-          accept=".pdf,.docx,.txt,.md,.markdown,.csv"
+          accept=".pdf,.docx,.txt,.md,.markdown,.csv,.xlsx,.xls"
           className="hidden"
           onChange={(event) => {
             handleFiles(event.target.files);
@@ -219,7 +219,8 @@ function KnowledgePage() {
           {uploading ? `Processing ${uploading}…` : "Drop files here or click upload"}
         </p>
         <p className="mt-1 text-xs text-muted-foreground">
-          PDF, DOCX, TXT, Markdown and CSV · up to {formatBytes(MAX_UPLOAD_BYTES)} per file
+          PDF, DOCX, XLSX, XLS, TXT, Markdown and CSV · up to {formatBytes(MAX_UPLOAD_BYTES)} per
+          file
         </p>
       </div>
 
