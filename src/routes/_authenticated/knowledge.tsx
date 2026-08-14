@@ -96,7 +96,7 @@ function KnowledgePage() {
 
     for (const file of Array.from(files)) {
       if (!isSupportedFile(file.name)) {
-        toast.error(`${file.name}: unsupported file type. Use PDF, DOCX, TXT, MD or CSV.`);
+        toast.error(`${file.name}: unsupported file type. Use PDF, DOCX, XLSX, TXT, MD or CSV.`);
         continue;
       }
       if (file.size > MAX_UPLOAD_BYTES) {
