@@ -63,6 +63,13 @@ const TEAM = [
     emoji: "⚙️",
     photo: vinayakPhoto.url,
   },
+  {
+    name: "Vinayak Nandan",
+    year: "3rd year",
+    role: "Back-end & RAG",
+    emoji: "🧠",
+    photo: vinayakNandanPhoto.url,
+  },
 ];
 
 function Landing() {
