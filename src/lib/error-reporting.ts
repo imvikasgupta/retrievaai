@@ -14,7 +14,7 @@ type RagEvents = {
 
 declare global {
   interface Window {
-    __lovableEvents?: LovableEvents;
+    __lovableEvents?: RagEvents;
     __lovableReportRuntimeError?: (payload: {
       message: string;
       stack?: string;
