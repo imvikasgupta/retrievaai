@@ -275,9 +275,9 @@ function Landing() {
                 {TEAM.map((member) => (
                   <div
                     key={member.name}
-                    className="surface-panel group animate-rise relative flex items-center gap-4 overflow-hidden p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift"
+                    className="surface-panel group animate-rise relative overflow-hidden p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift"
                   >
-                    <div className="relative size-20 shrink-0 overflow-hidden rounded-2xl ring-2 ring-border transition-all duration-300 group-hover:rotate-2 group-hover:scale-105 group-hover:ring-brand">
+                    <div className="relative mx-auto size-24 overflow-hidden rounded-2xl ring-2 ring-border transition-all duration-300 group-hover:rotate-2 group-hover:scale-105 group-hover:ring-brand">
                       <img
                         src={member.photo}
                         alt={`${member.name} — ${member.role}`}
@@ -285,15 +285,13 @@ function Landing() {
                         className="size-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>
-                    <div className="min-w-0">
-                      <h3 className="font-display text-sm font-semibold">
-                        {member.name}
-                      </h3>
-                      <p className="mt-1 text-sm text-muted-foreground">
-                        {member.emoji} {member.role}
-                      </p>
-                      <p className="mt-0.5 text-xs text-muted-foreground">🎓 {member.year}</p>
-                    </div>
+                    <h3 className="font-display mt-4 text-center text-sm font-semibold">
+                      {member.name}
+                    </h3>
+                    <p className="mt-1 text-center text-sm text-muted-foreground">
+                      {member.emoji} {member.role}
+                    </p>
+                    <p className="mt-0.5 text-center text-xs text-muted-foreground">🎓 {member.year}</p>
                     <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-brand transition-transform duration-300 group-hover:scale-x-100" />
                   </div>
                 ))}
