@@ -12,8 +12,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/hooks/useAuth";
 import { WaterCursor } from "@/components/effects/WaterCursor";
-import { TeamSection } from "@/components/team-section";
 import { trackCtaClick } from "@/lib/analytics";
+import vikasPhoto from "@/assets/vikas.jpg.asset.json";
+import vinayakPhoto from "@/assets/vinayak.jpg.asset.json";
+import vinayakNandanPhoto from "@/assets/vinayak-nandan.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -44,6 +46,30 @@ const PIPELINE = [
   { icon: Database, title: "Store", copy: "Vectors are indexed in Postgres with pgvector for fast similarity search." },
   { icon: FileSearch, title: "Retrieve", copy: "Every question pulls the most relevant chunks with a scored match." },
   { icon: Quote, title: "Answer", copy: "The model answers strictly from retrieved context, with citations." },
+];
+
+const TEAM = [
+  {
+    name: "Vikas Gupta",
+    year: "3rd year",
+    role: "UI/UX & RAG",
+    emoji: "🎨",
+    photo: vikasPhoto.url,
+  },
+  {
+    name: "Vaibhav Srivastav",
+    year: "3rd year",
+    role: "Front-end",
+    emoji: "⚙️",
+    photo: vinayakPhoto.url,
+  },
+  {
+    name: "Vinayak Nandan",
+    year: "3rd year",
+    role: "Back-end & RAG",
+    emoji: "🧠",
+    photo: vinayakNandanPhoto.url,
+  },
 ];
 
 function Landing() {
@@ -232,7 +258,47 @@ function Landing() {
           </div>
         </section>
 
-        <TeamSection />
+        {/* Features */}
+        <section id="features" className="border-y border-border/60 bg-muted/30 py-20">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div>
+                <p className="text-sm font-semibold text-brand">The team 👋</p>
+                <h2 className="font-display mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+                  Built by three students
+                </h2>
+                <p className="mt-3 text-muted-foreground">
+                  Design, frontend, backend, RAG and retrieval — shipped end to end. 🚀
+                </p>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {TEAM.map((member) => (
+                  <div
+                    key={member.name}
+                    className="surface-panel group animate-rise relative overflow-hidden p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift"
+                  >
+                    <div className="relative mx-auto size-24 overflow-hidden rounded-2xl ring-2 ring-border transition-all duration-300 group-hover:rotate-2 group-hover:scale-105 group-hover:ring-brand">
+                      <img
+                        src={member.photo}
+                        alt={`${member.name} — ${member.role}`}
+                        loading="lazy"
+                        className="size-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                    <h3 className="font-display mt-4 text-center text-sm font-semibold">
+                      {member.name}
+                    </h3>
+                    <p className="mt-1 text-center text-sm text-muted-foreground">
+                      {member.emoji} {member.role}
+                    </p>
+                    <p className="mt-0.5 text-center text-xs text-muted-foreground">🎓 {member.year}</p>
+                    <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-brand transition-transform duration-300 group-hover:scale-x-100" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Demo CTA */}
         <section id="demo" className="mx-auto max-w-6xl px-6 py-20">
