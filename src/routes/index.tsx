@@ -15,6 +15,7 @@ import { WaterCursor } from "@/components/effects/WaterCursor";
 import { trackCtaClick } from "@/lib/analytics";
 import vikasPhoto from "@/assets/vikas.jpg.asset.json";
 import vinayakPhoto from "@/assets/vinayak.jpg.asset.json";
+import vinayakNandanPhoto from "@/assets/vinayak-nandan.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
