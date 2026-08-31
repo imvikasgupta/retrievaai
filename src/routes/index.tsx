@@ -94,7 +94,7 @@ function Landing() {
               How it works
             </a>
             <a href="#features" className="transition-colors hover:text-foreground">
-              Features
+              The Team
             </a>
             <a href="#demo" className="transition-colors hover:text-foreground">
               Demo
@@ -268,7 +268,7 @@ function Landing() {
                   Built by three students
                 </h2>
                 <p className="mt-3 text-muted-foreground">
-                  Design, frontend, backend and retrieval — shipped end to end. 🚀
+                  Design, frontend, backend, RAG and retrieval — shipped end to end. 🚀
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
@@ -308,7 +308,7 @@ function Landing() {
                 Try it with the sample knowledge base
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-Five pre-loaded documents cover products, pricing, refunds, security and support. Ask a question, then upload
+Some pre-loaded documents cover products, pricing, refunds, security and support. Ask a question, then upload
                 your own files.
               </p>
               <Button asChild size="lg" className="mt-8 gap-2">
@@ -337,7 +337,7 @@ Five pre-loaded documents cover products, pricing, refunds, security and support
               <span className="absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-brand transition-transform duration-300 group-hover:origin-left group-hover:scale-x-100" />
             </span>
           </p>
-          <p>Retrieval-augmented generation · pgvector</p>
+          <p>Retrieval AI</p>
         </div>
       </footer>
     </div>
