@@ -1,13 +1,5 @@
 import { createFileRoute, Link, ClientOnly } from "@tanstack/react-router";
-import {
-  ArrowRight,
-  Blocks,
-  BookOpenCheck,
-  Database,
-  FileSearch,
-  Quote,
-  Sparkle,
-} from "lucide-react";
+import { ArrowRight, Blocks, BookOpenCheck, Database, FileSearch, Quote, Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/hooks/useAuth";
@@ -20,13 +12,13 @@ import vinayakNandanPhoto from "@/assets/vinayak-nandan.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Retrieva AI — Grounded RAG Support Assistant" },
+      { title: "Retrieva AI — RAG Based AI Assistant" },
       {
         name: "description",
         content:
           "Upload your documentation and let an AI support assistant answer with cited, grounded responses. Vector search, live pipeline visibility and human escalation built in.",
       },
-      { property: "og:title", content: "Retrieva AI — Grounded RAG Support Assistant" },
+      { property: "og:title", content: "Retrieva AI — RAG Based AI Assistant" },
       {
         property: "og:description",
         content:
@@ -102,9 +94,7 @@ function Landing() {
           </nav>
           <div className="flex items-center gap-2">
             <Button asChild variant="ghost" size="sm">
-              <Link to={isAuthenticated ? "/dashboard" : "/auth"}>
-                {isAuthenticated ? "Dashboard" : "Sign in"}
-              </Link>
+              <Link to={isAuthenticated ? "/dashboard" : "/auth"}>{isAuthenticated ? "Dashboard" : "Sign in"}</Link>
             </Button>
             <Button asChild size="sm">
               <Link
@@ -188,9 +178,7 @@ function Landing() {
                     <span className="flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand transition-colors duration-300 group-hover:bg-brand/20">
                       <step.icon className="size-5" />
                     </span>
-                    <span className="font-display text-xs font-semibold text-muted-foreground">
-                      0{index + 1}
-                    </span>
+                    <span className="font-display text-xs font-semibold text-muted-foreground">0{index + 1}</span>
                   </div>
                   <h3 className="font-display mt-4 text-base font-semibold transition-colors duration-300 group-hover:text-brand">
                     {step.title}
@@ -285,9 +273,7 @@ function Landing() {
                         className="size-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>
-                    <h3 className="font-display mt-4 text-center text-sm font-semibold">
-                      {member.name}
-                    </h3>
+                    <h3 className="font-display mt-4 text-center text-sm font-semibold">{member.name}</h3>
                     <p className="mt-1 text-center text-sm text-muted-foreground">
                       {member.emoji} {member.role}
                     </p>
@@ -308,15 +294,13 @@ function Landing() {
                 Try it with the sample knowledge base
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-Some pre-loaded documents cover products, pricing, refunds, security and support. Ask a question, then upload
-                your own files.
+                Some pre-loaded documents cover products, pricing, refunds, security and support. Ask a question, then
+                upload your own files.
               </p>
               <Button asChild size="lg" className="mt-8 gap-2">
                 <Link
                   to={primaryTo}
-                  onClick={() =>
-                    trackCtaClick("open_the_rag_assistant", "Open the RAG Assistant", "demo_section")
-                  }
+                  onClick={() => trackCtaClick("open_the_rag_assistant", "Open the RAG Assistant", "demo_section")}
                 >
                   Open the RAG Assistant
                   <ArrowRight className="size-4" />
