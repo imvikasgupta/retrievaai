@@ -7,7 +7,7 @@ import {
   useReducedMotion,
   useSpring,
 } from "motion/react";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -93,7 +93,7 @@ export function TiltCard({
   const srx = useSpring(rx, SPRING_MOUSE);
   const sry = useSpring(ry, SPRING_MOUSE);
 
-  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const onMove = (e: MouseEvent<HTMLDivElement>) => {
     const el = ref.current;
     if (!el || !enabled) return;
     const rect = el.getBoundingClientRect();
