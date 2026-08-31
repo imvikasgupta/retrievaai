@@ -277,7 +277,7 @@ function Landing() {
                     key={member.name}
                     className="surface-panel group animate-rise relative overflow-hidden p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift"
                   >
-                    <div className="relative mx-auto size-24 overflow-hidden rounded-none ring-2 ring-border transition-all duration-300 group-hover:rotate-2 group-hover:scale-105 group-hover:ring-brand">
+                    <div className="relative mx-auto size-24 overflow-hidden rounded-2xl ring-2 ring-border transition-all duration-300 group-hover:rotate-2 group-hover:scale-105 group-hover:ring-brand">
                       <img
                         src={member.photo}
                         alt={`${member.name} — ${member.role}`}
