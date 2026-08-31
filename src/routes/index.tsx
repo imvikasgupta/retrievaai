@@ -15,6 +15,7 @@ import { WaterCursor } from "@/components/effects/WaterCursor";
 import { trackCtaClick } from "@/lib/analytics";
 import vikasPhoto from "@/assets/vikas.jpg.asset.json";
 import vinayakPhoto from "@/assets/vinayak.jpg.asset.json";
+import vinayakNandanPhoto from "@/assets/vinayak-nandan.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -61,6 +62,13 @@ const TEAM = [
     role: "Front-end",
     emoji: "⚙️",
     photo: vinayakPhoto.url,
+  },
+  {
+    name: "Vinayak Nandan",
+    year: "3rd year",
+    role: "Back-end & RAG",
+    emoji: "🧠",
+    photo: vinayakNandanPhoto.url,
   },
 ];
 
@@ -257,10 +265,10 @@ function Landing() {
               <div>
                 <p className="text-sm font-semibold text-brand">The team 👋</p>
                 <h2 className="font-display mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-                  Built by two students
+                  Built by three students
                 </h2>
                 <p className="mt-3 text-muted-foreground">
-                  Design, retrieval and backend — shipped end to end. 🚀
+                  Design, frontend, backend and retrieval — shipped end to end. 🚀
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
