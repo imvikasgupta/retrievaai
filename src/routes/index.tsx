@@ -265,10 +265,10 @@ function Landing() {
               <div>
                 <p className="text-sm font-semibold text-brand">The team 👋</p>
                 <h2 className="font-display mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-                  Built by two students
+                  Built by three students
                 </h2>
                 <p className="mt-3 text-muted-foreground">
-                  Design, retrieval and backend — shipped end to end. 🚀
+                  Design, frontend, backend and retrieval — shipped end to end. 🚀
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
