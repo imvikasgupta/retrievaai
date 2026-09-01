@@ -18,20 +18,16 @@ export const Route = createFileRoute("/")({
         content:
           "Upload your documentation and let an AI support assistant answer with cited, grounded responses. Vector search, live pipeline visibility and human escalation built in.",
       },
-       links: [
-      {
-        rel: "icon",
-        type: "image/ico",
-        href: "/favicon.ico",},
       { property: "og:title", content: "Retrieva AI — RAG Based AI Assistant" },
       {
         property: "og:description",
         content:
           "Grounded, citation-backed AI support answers over your own documents — with retrieval visibility and human escalation.",
       },
-      // { property: "og:url", content: "https://retrievaai.lovable.app/" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
-    // links: [{ rel: "canonic", href: "https://etrievaai.lovable.app/" }],
+    links: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   }),
   component: Landing,
 });
