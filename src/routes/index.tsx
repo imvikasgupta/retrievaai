@@ -24,9 +24,9 @@ export const Route = createFileRoute("/")({
         content:
           "Grounded, citation-backed AI support answers over your own documents — with retrieval visibility and human escalation.",
       },
-      { property: "og:url", content: "https://retrievaai.lovable.app/" },
+      // { property: "og:url", content: "https://retrievaai.lovable.app/" },
     ],
-    links: [{ rel: "canonic", href: "https://etrievaai.lovable.app/" }],
+    // links: [{ rel: "canonic", href: "https://etrievaai.lovable.app/" }],
   }),
   component: Landing,
 });
