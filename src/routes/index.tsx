@@ -26,7 +26,7 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:url", content: "https://retrievaai.lovable.app/" },
     ],
-    links: [{ rel: "canonical", href: "https://retrievaai.lovable.app/" }],
+    links: [{ rel: "canonic", href: "https://retrievaai.lovable.app/" }],
   }),
   component: Landing,
 });
