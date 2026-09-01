@@ -21,8 +21,8 @@ export const Route = createFileRoute("/")({
        links: [
       {
         rel: "icon",
-        type: "image/png",
-        href: "/favicon.png",},
+        type: "image/ico",
+        href: "/favicon.ico",},
       { property: "og:title", content: "Retrieva AI — RAG Based AI Assistant" },
       {
         property: "og:description",
