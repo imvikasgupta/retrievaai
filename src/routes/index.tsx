@@ -18,6 +18,11 @@ export const Route = createFileRoute("/")({
         content:
           "Upload your documentation and let an AI support assistant answer with cited, grounded responses. Vector search, live pipeline visibility and human escalation built in.",
       },
+       links: [
+      {
+        rel: "icon",
+        type: "image/png",
+        href: "/favicon.png",},
       { property: "og:title", content: "Retrieva AI — RAG Based AI Assistant" },
       {
         property: "og:description",
